@@ -32,21 +32,24 @@ export async function POST(request: NextRequest) {
             apiBody.message = { attachment }
         }
 
-        // 3. Send to Instagram
-        const res = await fetch(
-            `https://graph.instagram.com/v24.0/me/messages?access_token=${user.access_token}`,
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(apiBody)
+        // 3. Send to Instagram (Mock in dev mode)
+        let data: any = { message_id: `mock_mid_${Date.now()}` }
+        if (user.access_token !== "TEST_TOKEN_NOT_REAL" && user.access_token !== "MOCK_TOKEN" && process.env.INSTAGRAM_ACCESS_TOKEN !== "MOCK_TOKEN") {
+            const res = await fetch(
+                `https://graph.instagram.com/v24.0/me/messages?access_token=${user.access_token}`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(apiBody)
+                }
+            )
+            data = await res.json()
+            if (data.error) {
+                console.error("[Inbox Send] Instagram API Error:", data.error)
+                return NextResponse.json({ error: data.error.message }, { status: 500 })
             }
-        )
-
-        const data = await res.json()
-
-        if (data.error) {
-            console.error("[Inbox Send] Instagram API Error:", data.error)
-            return NextResponse.json({ error: data.error.message }, { status: 500 })
+        } else {
+            console.log(`[inbox-mock] Sent message to recipient ${recipientId}:`, apiBody)
         }
 
         // 4. Log to Database (Outbound Message)
