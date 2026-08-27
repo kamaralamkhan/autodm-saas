@@ -12,8 +12,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Not available in production" }, { status: 403 })
     }
 
-    const TEST_USER_ID = "9999999999"
-    const TEST_USERNAME = "test_creator"
+    const TEST_USER_ID = "123456789"
+    const TEST_USERNAME = "testuser"
 
     const supabase = await getSupabaseServerClient()
 
