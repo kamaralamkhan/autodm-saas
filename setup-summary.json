@@ -1,0 +1,11 @@
+{
+  "branch": "dev/ide-setup",
+  "local_run_command": "bash scripts/dev-setup.sh",
+  "secrets_location": ".env.local",
+  "manual_steps": [
+    "Verify business in Meta Developer Dashboard",
+    "Submit Instagram Manage Messages & Comments for Meta App Review",
+    "Install Docker for local database testing, or provide live Supabase credentials",
+    "Add Stripe test keys if monetizing"
+  ]
+}
