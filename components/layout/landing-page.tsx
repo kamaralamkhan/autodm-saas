@@ -3,9 +3,8 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import {
-  Zap, MessageCircle, Sparkles, ArrowUpRight, Github, Star,
+  Zap, MessageCircle, Sparkles, ArrowRight, Github, Star,
   Send, AtSign, Brain, Inbox, Lock, Terminal,
-  Loader2,
 } from "lucide-react"
 
 const GITHUB_URL = "https://github.com/kamaralamkhan/autodm-saas"
@@ -26,8 +25,6 @@ export function LandingPage() {
       handleTestLogin()
       return
     }
-    // Instagram Business Login (Instagram API with Instagram Login). client_id must be the
-    // Instagram app ID from the Instagram product page, not the parent Meta app ID.
     window.location.href = `https://www.instagram.com/oauth/authorize?enable_fb_login=0&force_authentication=1&client_id=${process.env.NEXT_PUBLIC_INSTAGRAM_APP_ID}&redirect_uri=${process.env.NEXT_PUBLIC_INSTAGRAM_REDIRECT_URI}&response_type=code&scope=instagram_business_basic%2Cinstagram_business_manage_messages%2Cinstagram_business_manage_comments`
   }
 
@@ -39,183 +36,199 @@ export function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] selection:bg-[#ffe14d] selection:text-black overflow-x-hidden antialiased">
+    <div className="min-h-screen bg-background text-foreground selection:bg-accent-blue selection:text-white overflow-x-hidden antialiased">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap');
-        .font-serif-display { font-family: 'Instrument Serif', Georgia, serif; }
-        .font-mono-ui { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .marquee-track { animation: marquee 30s linear infinite; }
-        @keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-up { animation: fade-up .7s cubic-bezier(.2,.7,.2,1) both; }
-        .grain::before {
-          content: ""; position: fixed; inset: 0; z-index: 5; pointer-events: none; opacity: .04;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        
+        @keyframes blob {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
         }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
       `}</style>
 
-      <div className="grain" />
+      {/* Ambient Background Glows */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-blue/20 rounded-full mix-blend-multiply filter blur-[128px] opacity-70 animate-blob dark:mix-blend-screen" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-accent-pink/20 rounded-full mix-blend-multiply filter blur-[128px] opacity-70 animate-blob animation-delay-2000 dark:mix-blend-screen" />
+        <div className="absolute -bottom-32 left-1/2 w-96 h-96 bg-accent-yellow-soft/20 rounded-full mix-blend-multiply filter blur-[128px] opacity-70 animate-blob animation-delay-4000 dark:mix-blend-screen" />
+      </div>
 
-      {/* Nav */}
-      <nav className="relative z-50 flex items-center justify-between px-5 md:px-10 h-16 border-b border-white/[0.08]">
-        <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 bg-[#ffe14d] text-black flex items-center justify-center rounded-[6px]">
-            <Zap className="w-3.5 h-3.5" strokeWidth={2.5} />
+      {/* Floating Navbar */}
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4 pointer-events-none">
+        <nav className="flex items-center justify-between px-6 h-14 bg-background/70 backdrop-blur-xl border border-border rounded-full shadow-sm max-w-5xl w-full pointer-events-auto transition-all">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-primary text-primary-foreground flex items-center justify-center rounded-full shadow-inner">
+              <Zap className="w-4 h-4" strokeWidth={2.5} />
+            </div>
+            <span className="font-semibold tracking-tight text-foreground">AutoDM Flow</span>
           </div>
-          <span className="font-mono-ui text-sm font-bold tracking-tight">AutoDM Flow</span>
-          <span className="hidden sm:inline-block font-mono-ui text-[10px] text-neutral-500 border border-white/10 rounded-full px-2 py-0.5">SaaS</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <a
-            href={GITHUB_URL} target="_blank" rel="noreferrer"
-            className="flex items-center gap-1.5 font-mono-ui text-xs text-neutral-400 hover:text-white border border-white/10 hover:border-white/30 rounded-full px-3.5 py-1.5 transition-colors"
-          >
-            <Github className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Star</span>
-            {stars !== null && <span className="text-[#ffe14d]">{stars}</span>}
-          </a>
-          {process.env.NODE_ENV === "development" && (
-            <button
-              onClick={handleTestLogin}
-              className="font-mono-ui text-xs font-bold text-[#ffe14d] border border-[#ffe14d]/30 rounded-full px-4 py-1.5 hover:bg-[#ffe14d]/10 transition-colors"
+          <div className="flex items-center gap-4">
+            <a
+              href={GITHUB_URL} target="_blank" rel="noreferrer"
+              className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Dev Login
+              <Github className="w-4 h-4" />
+              <span>Star on GitHub</span>
+              {stars !== null && <span className="text-accent-blue ml-1 font-semibold">{stars}</span>}
+            </a>
+            {process.env.NODE_ENV === "development" && (
+              <button
+                onClick={handleTestLogin}
+                className="text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Dev Login
+              </button>
+            )}
+            <button
+              onClick={handleLogin}
+              className="text-sm font-semibold bg-primary text-primary-foreground rounded-full px-5 py-2 hover:opacity-90 transition-opacity shadow-sm"
+            >
+              Log in
             </button>
-          )}
-          <button
-            onClick={handleLogin}
-            className="font-mono-ui text-xs font-bold bg-white text-black rounded-full px-4 py-1.5 hover:bg-[#ffe14d] transition-colors"
-          >
-            Log in
-          </button>
-        </div>
-      </nav>
+          </div>
+        </nav>
+      </div>
 
-      {/* Hero */}
-      <main className="relative z-10">
-        <section className="px-5 md:px-10 pt-16 md:pt-28 pb-16 max-w-6xl mx-auto">
-          <div className="fade-up" style={{ animationDelay: "0ms" }}>
-            <p className="font-mono-ui text-[11px] uppercase tracking-[0.25em] text-neutral-500 mb-6">
-              Instagram automation // self-hosted // no monthly fees
-            </p>
+      {/* Hero Section */}
+      <main className="relative z-10 pt-32 md:pt-48 pb-24 px-5">
+        <section className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          <div className="fade-up inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-border text-sm text-secondary-foreground font-medium mb-8 backdrop-blur-sm" style={{ animationDelay: "0ms" }}>
+            <Sparkles className="w-4 h-4 text-accent-blue" />
+            <span>The completely automated inbound engine</span>
           </div>
 
-          <h1 className="fade-up font-serif-display text-[15vw] md:text-[7.5rem] leading-[0.95] tracking-tight" style={{ animationDelay: "80ms" }}>
-            Your DMs,
-            <br />
-            <span className="italic text-[#ffe14d]">on autopilot.</span>
+          <h1 className="fade-up text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-8 text-foreground" style={{ animationDelay: "100ms" }}>
+            Scale your Instagram inbound on <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-pink">autopilot.</span>
           </h1>
 
-          <div className="fade-up mt-10 flex flex-col md:flex-row md:items-end gap-8 md:gap-16" style={{ animationDelay: "160ms" }}>
-            <p className="text-neutral-400 text-base md:text-lg max-w-md leading-relaxed">
-              Comment-to-DM funnels, keyword triggers, story reactions, AI replies, a live inbox,
-              and Reels scheduling. The open-source ManyChat alternative — your data stays in your own Supabase.
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
+          <p className="fade-up text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10" style={{ animationDelay: "200ms" }}>
+            Turn comments into customers. AutoDM Flow sends tailored DMs, handles keyword triggers, and uses AI to naturally reply to your audience 24/7.
+          </p>
+
+          <div className="fade-up flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto" style={{ animationDelay: "300ms" }}>
+            <button
+              onClick={handleLogin}
+              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary text-primary-foreground text-base font-semibold px-8 py-4 rounded-full shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all"
+            >
+              Connect Instagram
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            {process.env.NODE_ENV === "development" && (
               <button
-                onClick={handleLogin}
-                className="group flex items-center gap-2 bg-[#ffe14d] text-black font-mono-ui text-sm font-bold px-7 py-4 rounded-full hover:scale-[1.03] active:scale-[0.98] transition-transform"
+                onClick={handleTestLogin}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-secondary text-secondary-foreground text-base font-semibold px-8 py-4 rounded-full hover:bg-secondary/80 transition-all"
               >
-                Connect Instagram
-                <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform" />
+                <Terminal className="w-4 h-4" />
+                Dev Login
               </button>
-              {process.env.NODE_ENV === "development" && (
-                <button
-                  onClick={handleTestLogin}
-                  className="group flex items-center gap-2 font-mono-ui text-sm font-bold text-[#ffe14d] border border-[#ffe14d]/25 px-7 py-4 rounded-full hover:bg-[#ffe14d]/10 active:scale-[0.98] transition-all"
-                >
-                  <Terminal className="w-4 h-4" />
-                  Dev Login
-                </button>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Marquee */}
-        <div className="border-y border-white/[0.08] py-3 overflow-hidden">
-          <div className="marquee-track flex whitespace-nowrap font-mono-ui text-xs uppercase tracking-[0.2em] text-neutral-600 gap-8 w-max">
-            {Array.from({ length: 2 }).map((_, copy) => (
-              <div key={copy} className="flex gap-8">
-                {["comment → DM", "keyword triggers", "story reactions", "AI auto-reply", "live inbox", "ice breakers", "follow gate", "quick replies", "media attachments", "public + private replies"].map((t) => (
-                  <span key={t} className="flex items-center gap-8">
-                    {t} <span className="text-[#ffe14d]">✦</span>
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Feature grid */}
-        <section className="px-5 md:px-10 py-20 max-w-6xl mx-auto">
-          <div className="flex items-baseline justify-between mb-10">
-            <h2 className="font-serif-display text-4xl md:text-5xl">Everything the paid tools do.</h2>
-            <span className="hidden md:block font-mono-ui text-xs text-neutral-600">$0/month</span>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-px bg-white/[0.08] border border-white/[0.08]">
-            <Feature icon={<MessageCircle className="w-4 h-4" />} title="Comment → DM funnels"
-              desc="Keyword or reply-all triggers on any post. Choose DM only, public reply only, or both — with your own rotating public replies." />
-            <Feature icon={<Send className="w-4 h-4" />} title="DM keyword automation"
-              desc="Auto-respond to DMs with text, media, or rich cards with buttons. Quick-reply chips guide people through your funnel." />
-            <Feature icon={<AtSign className="w-4 h-4" />} title="Story triggers"
-              desc="React to story mentions, emoji reactions, and story replies. Filter by emoji or keyword." />
-            <Feature icon={<Brain className="w-4 h-4" />} title="AI auto-reply"
-              desc="Feed it your account context — niche, products, tone — and let AI handle unmatched DMs like a human." />
-            <Feature icon={<Inbox className="w-4 h-4" />} title="Live inbox"
-              desc="Every conversation in one dashboard. Jump in manually anytime, fire quick responses from your saved automations." />
-            <Feature icon={<Lock className="w-4 h-4" />} title="Follow gate"
-              desc="Lock content behind a follow. Non-followers get a follow prompt; one tap later they unlock the goods." />
-            <Feature icon={<Sparkles className="w-4 h-4" />} title="Human-like sending"
-              desc="Optional typing indicators and randomized delays so replies land natural, not botty." />
-            <Feature icon={<Terminal className="w-4 h-4" />} title="Self-hosted & hackable"
-              desc="Next.js + Supabase. Deploy on free tiers. Read every line, fork it, own your data and your tokens." />
-          </div>
-        </section>
-
-        {/* Community strip */}
-        <section className="px-5 md:px-10 pb-24 max-w-6xl mx-auto">
-          <div className="border border-white/[0.08] rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 bg-gradient-to-br from-white/[0.03] to-transparent">
-            <div>
-              <h3 className="font-serif-display text-3xl md:text-4xl mb-2">Grow Your Audience.</h3>
-              <p className="text-neutral-500 text-sm max-w-md">
-                Join thousands of creators using AutoDM Flow to automate their inbound funnels.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={GITHUB_URL} target="_blank" rel="noreferrer"
-                className="flex items-center gap-2 border border-white/15 text-neutral-300 font-mono-ui text-xs font-bold px-5 py-3 rounded-full hover:border-white/40 transition-colors"
-              >
-                <Star className="w-3.5 h-3.5 text-[#ffe14d]" /> Star on GitHub
-              </a>
-            </div>
+            )}
           </div>
         </section>
       </main>
 
+      {/* Bento Grid Features */}
+      <section className="relative z-10 px-5 md:px-10 py-24 max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Everything you need to scale.</h2>
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto">Built for modern creators and brands who want full control over their Instagram funnels.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Large Feature 1 */}
+          <div className="md:col-span-2 bg-card border border-border rounded-3xl p-8 hover:shadow-xl transition-shadow flex flex-col justify-between overflow-hidden relative group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent-blue/10 rounded-full blur-3xl -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-0" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-6 text-foreground">
+                <MessageCircle className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Comment-to-DM Funnels</h3>
+              <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+                Whenever someone comments a trigger word on your posts or reels, instantly send them a DM with your link or lead magnet.
+              </p>
+            </div>
+          </div>
+
+          {/* Small Feature 1 */}
+          <div className="bg-card border border-border rounded-3xl p-8 hover:shadow-xl transition-shadow group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-accent-yellow-soft/20 rounded-full blur-2xl -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-0" />
+            <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-6 text-foreground">
+              <Brain className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-bold mb-3">AI Auto-Reply</h3>
+            <p className="text-muted-foreground">
+              Feed it your context, and let the AI handle unmatched DMs natively in your own tone of voice.
+            </p>
+          </div>
+
+          {/* Small Feature 2 */}
+          <div className="bg-card border border-border rounded-3xl p-8 hover:shadow-xl transition-shadow group relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-accent-pink/10 rounded-full blur-2xl -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-0" />
+            <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-6 text-foreground">
+              <AtSign className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-bold mb-3">Story Triggers</h3>
+            <p className="text-muted-foreground">
+              Automatically react to story mentions, emoji reactions, and story replies.
+            </p>
+          </div>
+
+          {/* Large Feature 2 */}
+          <div className="md:col-span-2 bg-card border border-border rounded-3xl p-8 hover:shadow-xl transition-shadow flex flex-col justify-between overflow-hidden relative group">
+             <div className="absolute top-0 left-0 w-64 h-64 bg-success/10 rounded-full blur-3xl -ml-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-0" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-6 text-foreground">
+                <Inbox className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Live Inbox & CRM</h3>
+              <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+                View all your active conversations in a beautiful dashboard. Jump in manually anytime and fire quick responses.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Community / Final CTA */}
+      <section className="relative z-10 px-5 md:px-10 pb-32 max-w-4xl mx-auto text-center">
+        <div className="bg-gradient-to-b from-card to-background border border-border rounded-3xl p-12 md:p-16 shadow-2xl">
+          <h3 className="text-3xl md:text-5xl font-bold mb-6">Ready to scale?</h3>
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-10">
+            Join thousands of creators using AutoDM Flow to automate their inbound funnels and reclaim their time.
+          </p>
+          <button
+            onClick={handleLogin}
+            className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground text-lg font-semibold px-10 py-5 rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20"
+          >
+            Connect Instagram Now
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="border-t border-white/[0.08] px-5 md:px-10 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <span className="font-mono-ui text-[11px] text-neutral-600">
-          AutoDM Flow — Instagram automation.
-        </span>
-        <div className="flex items-center gap-5 font-mono-ui text-[11px] text-neutral-500">
-          <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">GitHub</a>
+      <footer className="border-t border-border bg-background">
+        <div className="max-w-6xl mx-auto px-5 md:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 bg-primary text-primary-foreground flex items-center justify-center rounded-sm">
+              <Zap className="w-3 h-3" strokeWidth={2.5} />
+            </div>
+            <span className="font-semibold text-sm">AutoDM Flow</span>
+          </div>
+          <span className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} AutoDM Flow. All rights reserved.
+          </span>
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors font-medium">GitHub</a>
+            <a href="/privacy" className="hover:text-foreground transition-colors font-medium">Privacy Policy</a>
+          </div>
         </div>
       </footer>
-    </div>
-  )
-}
-
-function Feature({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
-  return (
-    <div className="bg-[#0a0a0a] p-7 group hover:bg-[#0f0f0e] transition-colors">
-      <div className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-neutral-500 group-hover:text-[#ffe14d] group-hover:border-[#ffe14d]/30 transition-colors mb-5">
-        {icon}
-      </div>
-      <h3 className="font-mono-ui text-sm font-bold text-white mb-2">{title}</h3>
-      <p className="text-[13px] text-neutral-500 leading-relaxed">{desc}</p>
     </div>
   )
 }
