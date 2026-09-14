@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="https://img.shields.io/github/stars/ayuuxh2/insta-p8?style=for-the-badge&color=facc15" alt="GitHub stars" />
+  <img src="https://img.shields.io/github/stars/kamaralamkhan/autodm-saas?style=for-the-badge&color=facc15" alt="GitHub stars" />
   <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js" />
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" alt="React" />
   <img src="https://img.shields.io/badge/Supabase-Postgres-3ECF8E?style=for-the-badge&logo=supabase" alt="Supabase" />
   <img src="https://img.shields.io/badge/Instagram-Automation-E4405F?style=for-the-badge&logo=instagram" alt="Instagram automation" />
-  <a href="https://www.producthunt.com/products/instaauto?launch=instaauto"><img src="https://img.shields.io/badge/Featured%20on-Product%20Hunt-DA552F?style=for-the-badge&logo=producthunt&logoColor=white" alt="Product Hunt" /></a>
-  <a href="https://discord.gg/7J9E7bNvX"><img src="https://img.shields.io/badge/Discord-Join-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
-  <a href="https://t.me/instagramautomationp8"><img src="https://img.shields.io/badge/Telegram-Join-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Group" /></a>
+  <a href="https://www.producthunt.com/products/AutoDM Flow?launch=AutoDM Flow"><img src="https://img.shields.io/badge/Featured%20on-Product%20Hunt-DA552F?style=for-the-badge&logo=producthunt&logoColor=white" alt="Product Hunt" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Discord-Join-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Telegram-Join-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Group" /></a>
 </p>
 
-<h1 align="center">⚡ InstaAuto</h1>
+<h1 align="center">⚡ AutoDM Flow</h1>
 
 <p align="center">
   <strong>Free open-source ManyChat alternative — Instagram DM automation, comment-to-DM funnels, story replies, AI auto-replies, and a live inbox.</strong>
@@ -29,9 +29,9 @@
   <a href="#-environment-variables"><strong>Env Setup</strong></a> ·
   <a href="#-deploy-to-vercel"><strong>Deploy</strong></a> ·
   <a href="#-faq"><strong>FAQ</strong></a> ·
-  <a href="https://www.producthunt.com/products/instaauto?launch=instaauto"><strong>Product Hunt</strong></a> ·
-  <a href="https://discord.gg/7J9E7bNvX"><strong>Discord</strong></a> ·
-  <a href="https://t.me/instagramautomationp8"><strong>Telegram</strong></a>
+  <a href="https://www.producthunt.com/products/AutoDM Flow?launch=AutoDM Flow"><strong>Product Hunt</strong></a> ·
+  <a href="#"><strong>Discord</strong></a> ·
+  <a href="#"><strong>Telegram</strong></a>
 </p>
 
 ---
@@ -42,7 +42,7 @@ Get your self-hosted Instagram automation platform live in under 18 minutes! Fol
 
 <p align="center">
   <a href="https://youtu.be/kIMQe__d37I" target="_blank">
-    <img src="https://img.youtube.com/vi/kIMQe__d37I/0.jpg" alt="InstaAuto Setup Tutorial Video" width="600" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+    <img src="https://img.youtube.com/vi/kIMQe__d37I/0.jpg" alt="AutoDM Flow Setup Tutorial Video" width="600" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
   </a>
 </p>
 
@@ -52,9 +52,9 @@ Get your self-hosted Instagram automation platform live in under 18 minutes! Fol
 
 ---
 
-## 🚀 What is InstaAuto?
+## 🚀 What is AutoDM Flow?
 
-**InstaAuto** is an open-source Instagram automation platform built for creators, indie hackers, agencies, brands, and developers who want to automate Instagram workflows without paying recurring fees for closed SaaS tools.
+**AutoDM Flow** is an open-source Instagram automation platform built for creators, indie hackers, agencies, brands, and developers who want to automate Instagram workflows without paying recurring fees for closed SaaS tools.
 
 Use it to build:
 
@@ -74,7 +74,7 @@ If you are searching for a **free ManyChat alternative**, **open-source Instagra
 
 ## 🌐 Live Web App & Testing Access
 
-You have two ways to use InstaAuto:
+You have two ways to use AutoDM Flow:
 
 ### Option 1: Join the released web app as a tester
 
@@ -88,7 +88,7 @@ If you do not want to deploy anything yourself, you can request access to the ho
 
 ### Option 2: Self-host it
 
-If you are a developer or agency, self-host InstaAuto on your own Vercel + Supabase account.
+If you are a developer or agency, self-host AutoDM Flow on your own Vercel + Supabase account.
 
 - **Best for:** developers, agencies, privacy-focused teams, power users
 - **You control:** database, tokens, deployment, AI gateway, webhook URL
@@ -100,7 +100,7 @@ If you are a developer or agency, self-host InstaAuto on your own Vercel + Supab
 
 Try a real Instagram automation demo before self-hosting.
 
-- **Instagram profile:** [@ayuuxh2](https://www.instagram.com/ayuuxh2/)
+- **Instagram profile:** [@kamaralamkhan](https://www.instagram.com/kamaralamkhan/)
 - **DM keyword demo:** send `hello` in DMs → bot replies with a welcome message
 - **Comment-to-DM demo:** comment `link` on the demo post → bot public-replies and DMs you the link
 - **Comment-to-DM demo post:** [instagram.com/p/DWb3vuZDxm6](https://www.instagram.com/p/DWb3vuZDxm6/)
@@ -114,9 +114,9 @@ This showcase helps contributors and testers verify that the open-source Instagr
 
 ## �💡 Why not just use ManyChat?
 
-ManyChat is great, but it is closed-source and paid. InstaAuto is for people who want ownership and flexibility.
+ManyChat is great, but it is closed-source and paid. AutoDM Flow is for people who want ownership and flexibility.
 
-| Feature | ManyChat | InstaAuto |
+| Feature | ManyChat | AutoDM Flow |
 |---|---:|---:|
 | Open source | ❌ | ✅ |
 | Self-hosted | ❌ | ✅ |
@@ -129,7 +129,7 @@ ManyChat is great, but it is closed-source and paid. InstaAuto is for people who
 | Vercel deployable | ❌ | ✅ |
 | Full source code access | ❌ | ✅ |
 
-**Positioning:** InstaAuto is not a drop-in clone. It is an open-source, self-hosted automation base for builders who want to customize Instagram automation deeply.
+**Positioning:** AutoDM Flow is not a drop-in clone. It is an open-source, self-hosted automation base for builders who want to customize Instagram automation deeply.
 
 ---
 
@@ -263,8 +263,8 @@ scripts/                         Legacy per-feature SQL migrations
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/ayuuxh2/insta-p8.git
-cd insta-p8
+git clone https://github.com/kamaralamkhan/autodm-saas.git
+cd autodm-saas
 ```
 
 ### 2. Install dependencies
@@ -436,33 +436,33 @@ Before going live, test these flows:
 
 ### Is there a free alternative to ManyChat for Instagram?
 
-Yes — InstaAuto is a free, open-source ManyChat alternative. You self-host it on Vercel and Supabase free tiers, connect your Instagram Business or Creator account through the official Instagram API, and get DM keyword automation, comment-to-DM funnels, story-reply automation, and a live inbox without any monthly fee.
+Yes — AutoDM Flow is a free, open-source ManyChat alternative. You self-host it on Vercel and Supabase free tiers, connect your Instagram Business or Creator account through the official Instagram API, and get DM keyword automation, comment-to-DM funnels, story-reply automation, and a live inbox without any monthly fee.
 
 ### How do I automate Instagram DMs for free?
 
-Deploy InstaAuto (about 18 minutes with the [video guide](https://youtu.be/kIMQe__d37I)), connect your Instagram professional account, and create a keyword rule — for example, auto-reply to every DM containing "price". Replies can be text, images, quick-reply chips, or button cards.
+Deploy AutoDM Flow (about 18 minutes with the [video guide](https://youtu.be/kIMQe__d37I)), connect your Instagram professional account, and create a keyword rule — for example, auto-reply to every DM containing "price". Replies can be text, images, quick-reply chips, or button cards.
 
 ### How does comment-to-DM automation work?
 
-When someone comments a trigger word (like "link") on your post, Instagram sends a webhook to your deployment. InstaAuto posts a public reply ("Check your DMs!") and sends the commenter a private DM with your link or lead magnet — the same funnel ManyChat charges for.
+When someone comments a trigger word (like "link") on your post, Instagram sends a webhook to your deployment. AutoDM Flow posts a public reply ("Check your DMs!") and sends the commenter a private DM with your link or lead magnet — the same funnel ManyChat charges for.
 
 ### Is this allowed by Instagram?
 
-Yes — InstaAuto uses the official Instagram API with Instagram Login and its approved permissions. Every reply is triggered by a user-initiated message or comment, within Instagram's messaging window rules. It does not scrape, mass-DM, or bypass rate limits.
+Yes — AutoDM Flow uses the official Instagram API with Instagram Login and its approved permissions. Every reply is triggered by a user-initiated message or comment, within Instagram's messaging window rules. It does not scrape, mass-DM, or bypass rate limits.
 
 ### Do I need a server?
 
 No dedicated server — it runs on Vercel serverless functions with a Supabase Postgres database. Both have free tiers that comfortably handle a creator account.
 
-### ManyChat vs Chatfuel vs InstaAuto?
+### ManyChat vs Chatfuel vs AutoDM Flow?
 
-ManyChat and Chatfuel are excellent hosted products with polished UIs and paid plans. InstaAuto trades the polish for ownership: full source code, your own database, unlimited customization, and $0/month.
+ManyChat and Chatfuel are excellent hosted products with polished UIs and paid plans. AutoDM Flow trades the polish for ownership: full source code, your own database, unlimited customization, and $0/month.
 
 ---
 
 ## 📈 SEO Use Cases
 
-InstaAuto can be used as:
+AutoDM Flow can be used as:
 
 - Free ManyChat alternative
 - Open-source ManyChat alternative
@@ -512,9 +512,9 @@ InstaAuto can be used as:
 
 Contributions are welcome.
 
-Join our **[Discord community](https://discord.gg/7J9E7bNvX)** for discussions, support, and updates!
+Join our **[Discord community](#)** for discussions, support, and updates!
 
-Join our **[Telegram group](https://t.me/instagramautomationp8)** for quick help, updates, and community chat!
+Join our **[Telegram group](#)** for quick help, updates, and community chat!
 
 Good first issues:
 

@@ -87,9 +87,19 @@ export async function POST(request: NextRequest) {
 
       if (meData.username) username = meData.username
       if (meData.profile_picture_url) profilePic = meData.profile_picture_url
-      if (meData.user_id) {
-        businessAccountId = meData.user_id.toString()
+      if (meData.id) {
+        businessAccountId = meData.id.toString()
         console.log(`[v0] 🎯 Got IG Professional Account ID (user_id): ${businessAccountId}`)
+        
+        // --- VITAL FIX: Automatically subscribe the user to webhooks using Graph API ---
+        try {
+          const subUrl = `https://graph.instagram.com/v24.0/${businessAccountId}/subscribed_apps?subscribed_fields=messages,messaging_postbacks,comments&access_token=${accessToken}`
+          const subRes = await fetch(subUrl, { method: "POST" })
+          const subJson = await subRes.json()
+          console.log(`[v0] 📡 Webhook automatic subscription result:`, JSON.stringify(subJson))
+        } catch (subErr) {
+          console.error("[v0] ❌ Failed to automatically subscribe webhooks:", subErr)
+        }
       } else {
         console.warn(`[v0] ⚠️ /me did not return user_id, using loginUserId: ${loginUserId}`)
       }

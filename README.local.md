@@ -1,6 +1,6 @@
-# InstaAuto Local Development Setup
+# AutoDM Flow Local Development Setup
 
-This guide provides instructions on how to quickly spin up the InstaAuto local development environment.
+This guide provides instructions on how to quickly spin up the AutoDM Flow local development environment.
 
 ## 🚀 One-Command Setup
 
