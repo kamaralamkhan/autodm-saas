@@ -9,7 +9,7 @@
    Palette: warm cream surface + obsidian ink + crimson accent + yellow.
    ============================================================ */
 :root {
-  --background: oklch(0.985 0.005 90);          /* #faf8f5 warm cream */
+  --background: oklch(1 0 0);                   /* #ffffff pure white */
   --foreground: oklch(0.18 0.01 280);           /* #1a1a24 obsidian ink */
 
   --card: oklch(1 0 0);                          /* pure white cards */
@@ -18,55 +18,49 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.01 280);
 
-  --primary: oklch(0.18 0.01 280);                /* obsidian buttons */
-  --primary-foreground: oklch(0.985 0.005 90);
+  --primary: oklch(0.55 0.18 255);                /* SaaS Blue (#2AABEE) */
+  --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.94 0.01 90);               /* soft cream chips */
+  --secondary: oklch(0.96 0.01 255);               /* soft blue tint chips */
   --secondary-foreground: oklch(0.25 0.01 280);
 
-  --muted: oklch(0.95 0.008 90);
-  --muted-foreground: oklch(0.45 0.01 280);      /* 5.2:1 on background */
+  --muted: oklch(0.96 0.01 255);
+  --muted-foreground: oklch(0.45 0.01 280);
 
-  --accent: oklch(0.93 0.01 90);
-  --accent-foreground: oklch(0.18 0.01 280);
+  --accent: oklch(0.96 0.01 255);
+  --accent-foreground: oklch(0.55 0.18 255);
 
-  --destructive: oklch(0.52 0.22 27);             /* crimson — 4.6:1 on bg */
-  --destructive-foreground: oklch(0.985 0.005 90);
+  --destructive: oklch(0.52 0.22 27);             /* crimson */
+  --destructive-foreground: oklch(1 0 0);
 
-  --success: oklch(0.55 0.16 145);                /* green for active toggles */
-  --success-foreground: oklch(0.985 0.005 90);
+  --success: oklch(0.55 0.16 145);                /* green */
+  --success-foreground: oklch(1 0 0);
 
   --warning: oklch(0.78 0.16 88);                 /* amber */
   --warning-foreground: oklch(0.18 0.01 280);
 
-  --border: oklch(0.88 0.01 90);                  /* visible hairline */
-  --input: oklch(0.88 0.01 90);
-  --ring: oklch(0.55 0.18 88);                    /* yellow focus ring */
+  --border: oklch(0.92 0.01 255);                  /* subtle blue-grey hairline */
+  --input: oklch(0.92 0.01 255);
+  --ring: oklch(0.55 0.18 255);                    /* blue focus ring */
 
-  /* Brand accents — tuned for legibility, not just punch.
-     accent-yellow drops chroma from 0.18 to 0.12 (less neon) and
-     lightness from 0.82 to 0.72 so it's a warm amber that doesn't
-     burn the eye on small text / badges in light mode. Dark mode
-     keeps the punchier values since the eye expects more saturation
-     against a dark surface. */
-    --accent-yellow: oklch(0.72 0.12 88);           /* soft amber — readable on cream */
-    --accent-yellow-foreground: oklch(0.18 0.01 280);
-    --accent-yellow-soft: oklch(0.94 0.06 88);       /* for tinted backgrounds */
-    --accent-blue: oklch(0.55 0.18 255);            /* 4.6:1 on bg */
-    --accent-blue-foreground: oklch(0.985 0.005 90);
-    --accent-pink: oklch(0.55 0.22 0);              /* 4.6:1 on bg */
-    --accent-pink-foreground: oklch(0.985 0.005 90);
+  --accent-yellow: oklch(0.72 0.12 88);
+  --accent-yellow-foreground: oklch(0.18 0.01 280);
+  --accent-yellow-soft: oklch(0.94 0.06 88);
+  --accent-blue: oklch(0.55 0.18 255);
+  --accent-blue-foreground: oklch(1 0 0);
+  --accent-pink: oklch(0.55 0.22 0);
+  --accent-pink-foreground: oklch(1 0 0);
 
   --radius: 0.5rem;
 
-  --sidebar: oklch(0.97 0.006 90);
+  --sidebar: oklch(0.98 0.005 255);
   --sidebar-foreground: oklch(0.25 0.01 280);
-  --sidebar-primary: oklch(0.18 0.01 280);
-  --sidebar-primary-foreground: oklch(0.985 0.005 90);
-  --sidebar-accent: oklch(0.93 0.01 90);
-  --sidebar-accent-foreground: oklch(0.18 0.01 280);
-  --sidebar-border: oklch(0.88 0.01 90);
-  --sidebar-ring: oklch(0.55 0.18 88);
+  --sidebar-primary: oklch(0.55 0.18 255);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.94 0.01 255);
+  --sidebar-accent-foreground: oklch(0.55 0.18 255);
+  --sidebar-border: oklch(0.92 0.01 255);
+  --sidebar-ring: oklch(0.55 0.18 255);
 }
 
 /* ============================================================
@@ -82,8 +76,8 @@
   --popover: oklch(0.17 0.006 280);
   --popover-foreground: oklch(0.97 0.005 90);
 
-  --primary: oklch(0.97 0.005 90);
-  --primary-foreground: oklch(0.13 0.005 280);
+  --primary: oklch(0.55 0.18 255);                /* SaaS Blue (#2AABEE) */
+  --primary-foreground: oklch(1 0 0);
 
   --secondary: oklch(0.24 0.006 280);
   --secondary-foreground: oklch(0.97 0.005 90);
@@ -92,7 +86,7 @@
   --muted-foreground: oklch(0.72 0.01 280);       /* ≥4.5:1 on background */
 
   --accent: oklch(0.24 0.006 280);
-  --accent-foreground: oklch(0.97 0.005 90);
+  --accent-foreground: oklch(0.55 0.18 255);
 
   --destructive: oklch(0.62 0.22 27);             /* brighter on dark */
   --destructive-foreground: oklch(0.97 0.005 90);
@@ -105,23 +99,23 @@
 
   --border: oklch(0.28 0.006 280);
   --input: oklch(0.28 0.006 280);
-  --ring: oklch(0.82 0.18 95);
+  --ring: oklch(0.55 0.18 255);
 
-  --accent-yellow: oklch(0.85 0.18 95);              /* punchy yellow for dark — eye expects saturation here */
-    --accent-yellow-foreground: oklch(0.13 0.005 280);
-    --accent-blue: oklch(0.7 0.17 255);              /* ≥4.5:1 on dark bg */
-    --accent-blue-foreground: oklch(0.13 0.005 280);
-    --accent-pink: oklch(0.72 0.2 0);
-    --accent-pink-foreground: oklch(0.13 0.005 280);
+  --accent-yellow: oklch(0.85 0.18 95);              
+  --accent-yellow-foreground: oklch(0.13 0.005 280);
+  --accent-blue: oklch(0.7 0.17 255);              
+  --accent-blue-foreground: oklch(0.13 0.005 280);
+  --accent-pink: oklch(0.72 0.2 0);
+  --accent-pink-foreground: oklch(0.13 0.005 280);
 
   --sidebar: oklch(0.13 0.005 280);
   --sidebar-foreground: oklch(0.85 0.005 90);
-  --sidebar-primary: oklch(0.97 0.005 90);
-  --sidebar-primary-foreground: oklch(0.13 0.005 280);
+  --sidebar-primary: oklch(0.55 0.18 255);
+  --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.21 0.006 280);
-  --sidebar-accent-foreground: oklch(0.97 0.005 90);
+  --sidebar-accent-foreground: oklch(0.55 0.18 255);
   --sidebar-border: oklch(0.24 0.006 280);
-  --sidebar-ring: oklch(0.85 0.18 95);
+  --sidebar-ring: oklch(0.55 0.18 255);
 }
 
 @theme inline {
