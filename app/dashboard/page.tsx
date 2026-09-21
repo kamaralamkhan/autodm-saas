@@ -60,8 +60,8 @@ export default function DashboardPage() {
             {/* Welcome Section */}
             <div className="flex items-center justify-between">
                 <div>
-                    <p className="font-mono-ui text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-2">Overview</p>
-                    <h1 className="font-serif-display text-4xl md:text-5xl text-foreground leading-none">Hey, {username}.</h1>
+                    <p className="font-mono-ui text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-2">Overview</p>
+                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground leading-none">Hey, {username}.</h1>
                     <p className="text-muted-foreground text-sm mt-3">Here's what your automations did while you were away.</p>
                 </div>
             </div>
@@ -72,41 +72,41 @@ export default function DashboardPage() {
                     title="Total Automations"
                     value={stats?.metrics.totalAutomations.toString() || "0"}
                     trend="Active"
-                    icon={<Zap className="w-5 h-5 text-accent-yellow-foreground dark:text-accent-yellow" />}
+                    icon={<Zap className="w-5 h-5 text-primary" />}
                 />
                 <StatCard
                     title="Messages Sent"
                     value={stats?.metrics.messagesSent.toString() || "0"}
                     trend="Lifetime"
-                    icon={<MessageCircle className="w-5 h-5 text-accent-yellow-foreground dark:text-accent-yellow" />}
+                    icon={<MessageCircle className="w-5 h-5 text-primary" />}
                 />
                 <StatCard
                     title="Active Triggers"
                     value={stats?.metrics.activeTriggers.toString() || "0"}
                     trend="Running"
-                    icon={<Activity className="w-5 h-5 text-accent-yellow-foreground dark:text-accent-yellow" />}
+                    icon={<Activity className="w-5 h-5 text-primary" />}
                 />
                 <StatCard
                     title="Audience Reached"
                     value={stats?.metrics.audienceReached.toString() || "0"}
                     trend="Unique Users"
-                    icon={<Users className="w-5 h-5 text-accent-yellow-foreground dark:text-accent-yellow" />}
+                    icon={<Users className="w-5 h-5 text-primary" />}
                 />
             </div>
 
             {/* Recent Activity */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <Card className="p-6 bg-card border-border">
-                    <h3 className="font-serif-display text-2xl text-foreground mb-5">Recent activity</h3>
+                <Card className="p-6 bg-card border-border shadow-sm">
+                    <h3 className="text-2xl font-bold tracking-tight text-foreground mb-5">Recent activity</h3>
                     <div className="space-y-4">
                         {stats?.recentActivity && stats.recentActivity.length > 0 ? (
                             stats.recentActivity.map((msg) => (
-                                <div key={msg.id} className="flex items-center gap-4 p-3 rounded-lg hover:bg-accent transition-colors">
-                                    <div className="w-10 h-10 rounded-full bg-accent-yellow/15 flex items-center justify-center text-accent-yellow-foreground dark:text-accent-yellow shrink-0">
+                                <div key={msg.id} className="flex items-center gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors">
+                                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                                         <MessageCircle className="w-5 h-5" />
                                     </div>
                                     <div className="min-w-0">
-                                        <p className="text-sm text-foreground font-medium truncate">
+                                        <p className="text-sm text-foreground font-semibold truncate">
                                             Auto-reply to @{msg.recipient?.recipient_username || "user"}
                                         </p>
                                         <p className="text-xs text-muted-foreground truncate w-full max-w-[300px]">{msg.content}</p>
@@ -124,16 +124,16 @@ export default function DashboardPage() {
                     </div>
                 </Card>
 
-                <Card className="p-6 bg-card border-border">
-                    <h3 className="font-serif-display text-2xl text-foreground mb-5">Quick actions</h3>
+                <Card className="p-6 bg-card border-border shadow-sm">
+                    <h3 className="text-2xl font-bold tracking-tight text-foreground mb-5">Quick actions</h3>
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="h-24 rounded-xl border border-dashed border-border flex flex-col items-center justify-center hover:bg-accent hover:border-accent-yellow cursor-pointer transition-colors group">
-                            <Zap className="w-6 h-6 text-muted-foreground group-hover:text-accent-yellow-foreground dark:group-hover:text-accent-yellow mb-2 transition-colors" />
-                            <span className="text-xs font-medium text-foreground">New Rule</span>
+                        <div className="h-24 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col items-center justify-center hover:bg-primary/10 hover:border-primary/40 cursor-pointer transition-all shadow-sm group">
+                            <Zap className="w-6 h-6 text-primary mb-2" />
+                            <span className="text-xs font-bold text-foreground">New Rule</span>
                         </div>
-                        <div className="h-24 rounded-xl border border-dashed border-border flex flex-col items-center justify-center hover:bg-accent hover:border-accent-yellow cursor-pointer transition-colors group">
-                            <Users className="w-6 h-6 text-muted-foreground group-hover:text-accent-yellow-foreground dark:group-hover:text-accent-yellow mb-2 transition-colors" />
-                            <span className="text-xs font-medium text-foreground">View Audience</span>
+                        <div className="h-24 rounded-2xl bg-secondary/30 border border-border flex flex-col items-center justify-center hover:bg-secondary/60 hover:border-border/80 cursor-pointer transition-all shadow-sm group">
+                            <Users className="w-6 h-6 text-muted-foreground group-hover:text-foreground mb-2 transition-colors" />
+                            <span className="text-xs font-bold text-foreground">View Audience</span>
                         </div>
                     </div>
                 </Card>
@@ -144,14 +144,16 @@ export default function DashboardPage() {
 
 function StatCard({ title, value, trend, icon }: { title: string, value: string, trend: string, icon: React.ReactNode }) {
     return (
-        <div className="p-6 rounded-2xl border border-border bg-card hover:border-foreground/20 transition-colors group">
-            <div className="flex items-start justify-between">
-                {icon}
-                <span className="font-mono-ui text-[10px] uppercase tracking-widest text-muted-foreground">{trend}</span>
+        <div className="p-6 rounded-3xl border border-border bg-card hover:border-primary/30 hover:shadow-md transition-all group">
+            <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                    {icon}
+                </div>
+                <span className="font-mono-ui text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">{trend}</span>
             </div>
-            <div className="mt-6">
-                <p className="font-serif-display text-5xl text-foreground leading-none">{value}</p>
-                <p className="font-mono-ui text-[10px] text-muted-foreground uppercase tracking-[0.2em] mt-3">{title}</p>
+            <div className="mt-4">
+                <p className="text-5xl font-extrabold tracking-tight text-foreground leading-none">{value}</p>
+                <p className="font-mono-ui text-[10px] text-muted-foreground uppercase tracking-[0.2em] font-semibold mt-3">{title}</p>
             </div>
         </div>
     )
