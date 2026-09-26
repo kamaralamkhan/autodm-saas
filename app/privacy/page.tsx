@@ -33,6 +33,20 @@ export default function PrivacyPage() {
           which will remove the stored tokens.
         </p>
 
+        <h2 className="text-xl font-semibold mt-6" id="data-deletion">Data Deletion Instructions</h2>
+        <p>
+          According to the Facebook Platform rules, we have to provide User Data Deletion Callback URL or Data Deletion Instructions URL. If you want to delete your activities for AutoDM Flow, you can remove your information by following these steps:
+        </p>
+        <ol className="list-decimal pl-5 space-y-1">
+          <li>Go to your Facebook Account's "Settings & Privacy". Click "Settings".</li>
+          <li>Look for "Apps and Websites" and you will see all of the apps and websites you linked with your Facebook.</li>
+          <li>Search and click "AutoDM Flow".</li>
+          <li>Scroll and click "Remove".</li>
+        </ol>
+        <p className="mt-2">
+          Congratulations, you have successfully removed your app activities and deleted all your data from our servers.
+        </p>
+
         <h2 className="text-xl font-semibold mt-6">Contact</h2>
         <p>
           For any questions, please reach out via the app dashboard or email at khankamaralam@gmail.com.
